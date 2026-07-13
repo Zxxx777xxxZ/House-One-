@@ -1,0 +1,109 @@
+{
+  "id": "house-one",
+  "name": "House One",
+  "version": "1.0.0",
+  "description": "Performance optimization layer for Claude Code using Headroom & Ruflo",
+  "author": "Claude Code",
+  "license": "MIT",
+  "homepage": "https://github.com/zxxx777xxxz/house-one",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zxxx777xxxz/house-one.git"
+  },
+  "capabilities": {
+    "commands": true,
+    "hooks": true,
+    "settings": true,
+    "mcp": true
+  },
+  "commands": [
+    {
+      "name": "optimize",
+      "title": "Optimize with House One",
+      "description": "Apply compression & orchestration optimizations to improve performance",
+      "handler": "commands/optimize.ts"
+    },
+    {
+      "name": "metrics",
+      "title": "Show Performance Metrics",
+      "description": "Display optimization metrics and token savings",
+      "handler": "commands/metrics.ts"
+    },
+    {
+      "name": "compression-test",
+      "title": "Test Compression",
+      "description": "Test compression on selected context",
+      "handler": "commands/test-compression.ts"
+    },
+    {
+      "name": "orchestration-plan",
+      "title": "Show Orchestration Plan",
+      "description": "Display the current task orchestration plan",
+      "handler": "commands/show-plan.ts"
+    },
+    {
+      "name": "toggle-house-one",
+      "title": "Toggle House One",
+      "description": "Enable/disable House One optimization",
+      "handler": "commands/toggle.ts"
+    },
+    {
+      "name": "clear-cache",
+      "title": "Clear Compression Cache",
+      "description": "Clear cached compression entries",
+      "handler": "commands/clear-cache.ts"
+    }
+  ],
+  "hooks": [
+    {
+      "id": "before-call",
+      "name": "before-claude-call",
+      "handler": "hooks/optimize-call.ts"
+    },
+    {
+      "id": "after-call",
+      "name": "after-claude-call",
+      "handler": "hooks/monitor-metrics.ts"
+    }
+  ],
+  "settings": {
+    "compressionLevel": {
+      "type": "select",
+      "default": "high",
+      "options": ["low", "medium", "high"],
+      "description": "Compression level for context reduction"
+    },
+    "orchestrationMode": {
+      "type": "select",
+      "default": "sequential",
+      "options": ["sequential", "swarm"],
+      "description": "Task execution mode (sequential or parallel swarm)"
+    },
+    "reversibleCaching": {
+      "type": "boolean",
+      "default": true,
+      "description": "Enable reversible compression with local caching"
+    },
+    "autoOptimize": {
+      "type": "boolean",
+      "default": true,
+      "description": "Automatically optimize all Claude calls"
+    },
+    "monitoringEnabled": {
+      "type": "boolean",
+      "default": true,
+      "description": "Track and report performance metrics"
+    }
+  },
+  "permissions": [
+    "read-context",
+    "modify-prompt",
+    "track-metrics",
+    "cache-storage"
+  ],
+  "dependencies": [],
+  "devDependencies": [
+    "typescript",
+    "ts-node"
+  ]
+}

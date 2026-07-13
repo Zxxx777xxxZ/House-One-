@@ -1,0 +1,49 @@
+{
+  "version": 2,
+  "hooks": [
+    {
+      "name": "house-one-optimize",
+      "description": "Auto-optimize Claude Code calls with Headroom + Ruflo",
+      "event": "before-claude-call",
+      "command": "npx tsx ./hooks/optimize-call.ts",
+      "enabled": true,
+      "shell": "bash"
+    },
+    {
+      "name": "house-one-monitor",
+      "description": "Monitor and report performance metrics",
+      "event": "after-claude-call",
+      "command": "npx tsx ./hooks/monitor-metrics.ts",
+      "enabled": true,
+      "shell": "bash"
+    },
+    {
+      "name": "house-one-cache-cleanup",
+      "description": "Periodic cache cleanup",
+      "event": "idle-5m",
+      "command": "npx tsx ./hooks/cleanup-cache.ts",
+      "enabled": true,
+      "shell": "bash"
+    }
+  ],
+  "settings": {
+    "house-one": {
+      "enabled": true,
+      "compression": {
+        "enabled": true,
+        "level": "high",
+        "reversibleCaching": true
+      },
+      "orchestration": {
+        "enabled": true,
+        "swarmMode": false,
+        "maxAgents": 4
+      },
+      "monitoring": {
+        "enabled": true,
+        "trackTokens": true,
+        "trackLatency": true
+      }
+    }
+  }
+}
