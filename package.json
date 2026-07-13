@@ -1,0 +1,42 @@
+{
+  "name": "house-one",
+  "version": "1.0.0",
+  "description": "Performance optimization layer for Claude Code using Ruflo and Headroom",
+  "type": "module",
+  "main": "dist/index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./compression": "./dist/compression/index.js",
+    "./orchestration": "./dist/orchestration/index.js",
+    "./core": "./dist/core/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "node --test dist/**/*.test.js",
+    "lint": "eslint src/**/*.ts",
+    "format": "prettier --write src/**/*.ts"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.3.3"
+  },
+  "peerDependencies": {
+    "headroom-ai": "^0.11.0 || ^1.0.0"
+  },
+  "peerDependenciesMeta": {
+    "headroom-ai": {
+      "optional": true
+    }
+  },
+  "keywords": [
+    "claude",
+    "ruflo",
+    "headroom",
+    "optimization",
+    "compression",
+    "performance"
+  ],
+  "license": "MIT"
+}
